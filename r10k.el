@@ -40,6 +40,13 @@
   :group 'r10k
   :type 'string)
 
+(defun r10k-find-puppetfile ()
+  "Visit the Puppetfile in `r10k-control-repo-path'"
+  (interactive)
+  (if (boundp 'r10k-control-repo-path)
+      (find-file (concat r10k-control-repo-path "/Puppetfile"))
+    (message "`r10k-control-repo-path' not set, skipping visiting Puppetfile.")))
+
 (defun r10k-command (cmd)
   "Execute an r10k command"
   (if (boundp 'r10k-control-repo-path)
